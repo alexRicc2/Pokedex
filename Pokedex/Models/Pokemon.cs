@@ -8,6 +8,8 @@ namespace Pokedex.Models
 {
     public class Pokemon
     {
+        [Required]
+        [Key]
         public int Id { get; set; }
         [Required]
         public string PokemonName { get; set; }
