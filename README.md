@@ -1,23 +1,87 @@
-# Instalação Visual Studio (Recomendado no Windows)
-Importante citar que o Visual Studio possui funcionalidades extras e uma maior compatibilidade com o .Net e C# em comparação ao VS code.
-É possível fazer sem porém não é recomendado.
+# Instalação MySql (Windows)
 
-Video da instalação ideal do Visual Studio para uso da ASP NET: https://drive.google.com/file/d/1fLRHEPkX5vfbaCiEaMuszdf3GnsIdfhf/view?usp=sharing
+Na janela de instalação, selecione a instalação customizada.
 
-Para instalar o Visual Studio vá no link https://visualstudio.microsoft.com/vs/community/
+Nela, selecione para instalar apenas o MySql Server 5.7.34, e o MySql Workbench 8.0.24.
 
-# VS code
-Caso decida por fazer a atividade no VS code, existem algumas extensões que possam melhorar a experiência na construção de APIs, como as extensões: C# e C# snippets
+<img src="./imagens/instalacao_atividade4.png" width="500">
 
-# Instalação Postman
+Na hora de definir a senha, defina como root.
 
-Para sequência do da atividade sera usado o Postman uma ferramenta que nos auxiliará a fazer requisições POST e GET
-Para fazer o download do Postman vá no link: https://www.postman.com/downloads/ 
+Após isso, continue a instalação normalmente.
+
+# Instalação MySql (Linux)
+
+Para instalar o MySql no Linux, rode o seguinte comando:
+```
+sudo apt install mysql-server
+```
+
+Depois, rode
+```
+sudo mysql -u root
+```
+
+Dentro do MySql que estará no terminal, digite os seguintes comandos: 
+```
+USE mysql;
+UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+FLUSH PRIVILEGES;
+exit;
+sudo service mysql restart
+```
+Após isso, rode:
+```
+sudo mysql_secure_installation
+```
+
+Primeiro, ele vai perguntar se deseja instalar um plugin para enforçar senhas fortes. Digite N.
+
+Depois, vai pedir para setar uma senha. Coloque a senha root.
+
+Depois, perguntara sobre anonymous user. Digite N.
+
+Depois, perguntara sobre conexão remota. Digite Y.
+
+Depois, sobre uma database Test. Digite N.
+
+E, por fim, se deseja atualizar agora. Digite Y.
+# Implementação de Banco de Dados na API
+
+Segue o video ensinando todos os passos para a implementação de um banco de dados em uma dotnet api: https://www.youtube.com/watch?v=D_wpM4DRZyQ
+
+Nele é usado windows. Caso esteja em linux, abaixo estão as alternativas para alguns passos utilizados no processo.
+
+# Instalação Pacotes Linux
+
+Como o linux não possui VisualStudio, será usado o terminal para instalação dos pacotes.
+
+Primeiro, instale o dotnet ef:
+```
+dotnet tool install --global dotnet-ef
+```
+
+Agora, para instalar os pacotes necessários:
+```
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package MySql.EntityFrameworkCore
+```
+
+# Migração no Linux
+
+Para fazer a migração do banco de dados que é citada no vídeo, rode:
+```
+dotnet ef migrations add CriandoTabelaPokemon
+dotnet ef database update
+```
+No vídeo é também usada uma interface grafica para acessar o MySql. No linux rode o comando:
+```
+mysql -u root -p
+```
 
 
-# Criação da Primeira API - POKEDEX
-Segue o vídeo da implementação de uma API simples que permite requisições GET, GET com parâmetro e POST
-https://youtu.be/arTEq2rxOqo
 
-Projeto final da pokedex no github:
-https://github.com/alexRicc2/Pokedex
+# Atividade
+
+Implemente o banco de dados na API de filmes da atividade anterior.
