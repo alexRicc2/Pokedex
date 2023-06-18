@@ -1,4 +1,6 @@
-# Instalação Visual Studio (Windows)
+# C# project
+
+# Instalação Visual Studio (Windows) 
 Importante citar que o Visual Studio possui funcionalidades extras e uma maior compatibilidade com o .Net e C# em comparação ao VS code.
 É possível fazer sem, mas, como você verá no próximo topico, poupa um trabalho de se ter de ficar configurando.
 
